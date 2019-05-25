@@ -1,5 +1,5 @@
 default:
- fragFolder: /data2/repository/genome/fragmap_4C/PK/
+ fragFolder: /hpc/hub_laat/users/aallahyar/bulk/My_Works/Translocation_Identification_Using_4C/10_Adrien_Translocation_Detection/side_analysis/08_4CPipeline_Commit0a58396/fragmap_4C/
  normalizeFactor: 1000000
  qualityCutoff : 0
  trimLength : 0
@@ -63,16 +63,16 @@ default:
  bowtie2:
   -
     mm9
-    /data2/repository/genome/mm9/Bowtie2Index/
+    /hpc/cog_bioinf/ridder/users/aallahyar/datasets/bowtie_index/mm9/
   -
     mm10
-    /data2/repository/genome/mm10/Bowtie2Index/
+    /hpc/cog_bioinf/ridder/users/aallahyar/datasets/bowtie_index/mm10/
   -
     hg19    
-    /data2/repository/genome/hg19/Bowtie2Index/
+    /hpc/cog_bioinf/ridder/users/aallahyar/datasets/bowtie_index/hg19/
   -
     hg38    
-    /data2/repository/genome/hg38/Bowtie2Index/
+    /hpc/cog_bioinf/ridder/users/aallahyar/datasets/bowtie_index/hg38/
 
     
     
