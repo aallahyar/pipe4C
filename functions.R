@@ -626,7 +626,11 @@ getUniqueFragends <- function( fragsGR_Unique, firstcutter_Unique="GATC", second
         check.trunc <- 1
       }
     }
-    
+
+    # check if genome file is ready to write
+    message( 'Wait until the restriction genome file is available for writing ...')
+    system("flock --exclusive --timeout 300 /tmp/4c_pipeline.lock --command 'echo File is available for writing'")
+
     system( paste0( "samtools view ", bamFile, " | grep -v \"XS:\" | cut -f 1 > ", uniquesFile ) )
     ids <- as.numeric( readLines( uniquesFile ) )
     elementMetadata( fragsGR_Unique )[[paste0("len", captureLen_Unique)]] <- fragsGR_Unique$fe_id%in%ids #Use Fragend coordinates. not coordinates for unique mapping. 
