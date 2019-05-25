@@ -926,7 +926,9 @@ Run.4Cpipeline <- function( VPinfo.file, FASTQ.F, OUTPUT.F, configuration){
   if (is.null(VPinfo)){
     stop( "viewpoint info file (vpFile) not correct." )
   }
-  write.table( VPinfo, paste0( OUTPUT.F, "/VPinfo.txt" ), sep="\t", row.names=FALSE, quote=F )
+  message( 'Wait until the vp file is available for writing ...')
+  system("flock --exclusive --timeout 100 /tmp/4c_vpinfo.lock --command 'echo File is available for writing'")
+  write.table( VPinfo, paste0( OUTPUT.F, "/VPinfo.txt" ), sep="\t", row.names=FALSE, quote=F, append=TRUE )
 
 
   if ( make.cisplot == TRUE ){
