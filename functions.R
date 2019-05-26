@@ -926,9 +926,9 @@ Run.4Cpipeline <- function( VPinfo.file, FASTQ.F, OUTPUT.F, configuration){
   if (is.null(VPinfo)){
     stop( "viewpoint info file (vpFile) not correct." )
   }
-  message( 'Wait until the vp file is available for writing ...')
-  system("flock --exclusive --timeout 100 /tmp/4c_vpinfo.lock --command 'echo File is available for writing'")
-  write.table( VPinfo, paste0( OUTPUT.F, "/VPinfo.txt" ), sep="\t", row.names=FALSE, quote=F, append=TRUE )
+  #message( 'Wait until the vp file is available for writing ...')
+  #system("flock --exclusive --timeout 100 /tmp/4c_vpinfo.lock --command 'echo File is available for writing'")
+  write.table( VPinfo, paste0( OUTPUT.F, "/VPinfo.txt" ), sep="\t", row.names=FALSE, quote=F, append=FALSE )
 
 
   if ( make.cisplot == TRUE ){
@@ -1079,7 +1079,7 @@ Run.4Cpipeline <- function( VPinfo.file, FASTQ.F, OUTPUT.F, configuration){
       
     
     
-    message( paste0("      >>> Create frag map for genome:", genome[i], " with RE1:", firstcutter, "and RE2:", secondcutter, " and capture length:", captureLen, " <<<" ) )
+    message( paste0("      >>> Create frag map for genome:", genome[i], " with RE1:", firstcutter, " and RE2:", secondcutter, " and capture length:", captureLen, " <<<" ) )
     frags <- getFragMap(
        vpChr_FragMap=NULL
       ,firstcutter_FragMap=firstcutter
